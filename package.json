@@ -1,0 +1,22 @@
+{
+	"name": "text-formatter-for-query",
+	"version": "1.0.0",
+	"description": "テキストファイルのIDやデータをクエリ用フォーマットに変換するツール",
+	"main": "index.ts",
+	"scripts": {
+		"start": "ts-node index.ts",
+		"format": "ts-node index.ts"
+	},
+	"keywords": [
+		"formatter",
+		"text",
+		"query"
+	],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^25.0.3",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.9.3"
+	}
+}
