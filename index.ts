@@ -1,10 +1,13 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-const filename = process.argv[2];
+const args = process.argv.slice(2);
+const useParen = args.includes("--paren");
+const useLike = args.includes("--like");
+const filename = args.find((arg) => !arg.startsWith("--"));
 
 if (!filename) {
-	console.error("使用方法: npx ts-node format-ids.ts <ファイル名>");
+	console.error("使用方法: npx ts-node index.ts [--paren] [--like] <ファイル名>");
 	process.exit(1);
 }
 
@@ -15,7 +18,13 @@ try {
 		.map((line) => line.trim())
 		.filter((line) => line.length > 0);
 
-	const formatted = lines.map((id) => `"${id}"`).join(",\n");
+	const formatted = lines
+		.map((id) => {
+			// --like は LIKE の部分一致検索用に前後へワイルドカードを付与する
+			const quoted = useLike ? `'%${id}%'` : `'${id}'`;
+			return useParen ? `(${quoted})` : quoted;
+		})
+		.join(",\n");
 
 	const outputPath = join(dirname(filename), "formatted.txt");
 	writeFileSync(outputPath, formatted, "utf-8");
