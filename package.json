@@ -7,7 +7,8 @@
 		"start": "ts-node index.ts target.txt",
 		"format": "ts-node index.ts",
 		"formatParen": "ts-node index.ts --paren",
-		"formatLike": "ts-node index.ts --like"
+		"formatLike": "ts-node index.ts --like",
+		"formatPair": "ts-node formatPair.ts"
 	},
 	"keywords": [
 		"formatter",
