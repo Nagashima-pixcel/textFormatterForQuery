@@ -4,8 +4,11 @@
 	"description": "テキストファイルのIDやデータをクエリ用フォーマットに変換するツール",
 	"main": "index.ts",
 	"scripts": {
-		"start": "ts-node index.ts",
-		"format": "ts-node index.ts"
+		"start": "ts-node index.ts target.txt",
+		"format": "ts-node index.ts",
+		"formatParen": "ts-node index.ts --paren",
+		"formatLike": "ts-node index.ts --like",
+		"formatPair": "ts-node formatPair.ts"
 	},
 	"keywords": [
 		"formatter",
